@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../model/todo_model.dart';
 import '../../../utils/constants.dart';
@@ -10,9 +11,12 @@ class TodoCardTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 100.h,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 27, 26, 3),
+        gradient: const LinearGradient(colors: [
+          Color(0xFF2C3E50),
+          Color(0xFFBDC3C7),
+        ]),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Padding(
@@ -23,13 +27,13 @@ class TodoCardTileWidget extends StatelessWidget {
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Text(
                 todo.title,
-                style: const TextStyle(color: Colors.white, fontSize: 23),
+                style: TextStyle(color: Colors.white, fontSize: 20.sp),
               ),
             ]),
             kHeight10,
             Text(
               todo.description,
-              style: const TextStyle(color: Colors.white, fontSize: 17),
+              style: TextStyle(color: Colors.white, fontSize: 16.sp),
             ),
           ],
         ),

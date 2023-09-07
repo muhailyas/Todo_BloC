@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_bloc/bloc/todo_bloc/todo_bloc_bloc.dart';
 import 'package:todo_bloc/view/home/home_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,11 +16,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Todo Bloc',
-      theme: ThemeData(),
-      home: const ScreenHome(),
-    );
+    return ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (_, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Todo Bloc',
+            theme: ThemeData(
+              textTheme: TextTheme(
+                  bodyMedium: TextStyle(fontSize: 10.sp),
+                  bodySmall: TextStyle(fontSize: 1.sp)),
+            ),
+            home: const ScreenHome(),
+          );
+        });
   }
 }

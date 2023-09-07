@@ -18,9 +18,6 @@ class ApiServices {
     );
 
     if (response.statusCode == 200) {
-      print(
-        '?${response.body}',
-      );
       final Map<String, dynamic> responseData = json.decode(response.body);
       final List<dynamic> items = responseData['items'];
       return items.map((json) => Todo.fromJson(json)).toList();

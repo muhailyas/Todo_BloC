@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_bloc/bloc/todo_bloc/todo_bloc_bloc.dart';
 import 'package:todo_bloc/view/add/add_screen.dart';
 import 'package:todo_bloc/view/home/widgets/todo_card_tile_widget.dart';
@@ -14,9 +15,9 @@ class ScreenHome extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text(
+        title: Text(
           "All Notes",
-          style: TextStyle(fontSize: 25),
+          style: TextStyle(fontSize: 25.sp),
         ),
       ),
       body: RefreshIndicator(
@@ -27,7 +28,6 @@ class ScreenHome extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: BlocBuilder<TodoBlocBloc, TodoBlocState>(
             builder: (context, state) {
-              print(state.todoList);
               if (state.isFetching) {
                 return const Center(
                   child: CircularProgressIndicator(),

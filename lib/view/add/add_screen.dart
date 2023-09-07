@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_bloc/bloc/todo_bloc/todo_bloc_bloc.dart';
@@ -54,14 +56,19 @@ class ScreenAdd extends StatelessWidget {
                       BlocBuilder<TodoBlocBloc, TodoBlocState>(
                         builder: (context, state) {
                           if (state.isSaving) {
-                            return const Center(
-                              child: CircularProgressIndicator(),
+                            return const SizedBox(
+                              width: 255,
+                              height: 45,
+                              child: Center(
+                                child: CircularProgressIndicator(),
+                              ),
                             );
                           }
                           return ElevatedButton(
                             style: const ButtonStyle(
-                                backgroundColor:
-                                    MaterialStatePropertyAll(Colors.grey),
+                                backgroundColor: MaterialStatePropertyAll(
+                                  Color(0xFF2C3E50),
+                                ),
                                 fixedSize:
                                     MaterialStatePropertyAll(Size(255, 45))),
                             onPressed: () {
@@ -77,8 +84,9 @@ class ScreenAdd extends StatelessWidget {
                       ),
                       ElevatedButton(
                           style: const ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(Colors.red),
+                              backgroundColor: MaterialStatePropertyAll(
+                                Color(0xFFBDC3C7),
+                              ),
                               fixedSize:
                                   MaterialStatePropertyAll(Size(140, 45))),
                           onPressed: () {
@@ -110,7 +118,7 @@ class ScreenAdd extends StatelessWidget {
       try {
         context.read<TodoBlocBloc>().add(TodoAddEvent(todo: newTodo));
       } catch (e) {
-        print(e);
+        log(e.toString());
       }
       formKey.currentState!.reset();
     }

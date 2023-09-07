@@ -18,7 +18,13 @@ class TextFieldWidget extends StatelessWidget {
       height: height,
       width: double.infinity,
       decoration: BoxDecoration(
-          color: Colors.grey, borderRadius: BorderRadius.circular(15)),
+          gradient: const LinearGradient(
+            colors: [
+              Color(0xFF2C3E50),
+              Color(0xFFBDC3C7),
+            ],
+          ),
+          borderRadius: BorderRadius.circular(15)),
       child: Center(
         child: TextFormField(
           style: const TextStyle(color: Colors.white),
